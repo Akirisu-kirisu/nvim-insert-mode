@@ -1,5 +1,6 @@
 local M = {}
--- local line_content = vim.api.nvim_get_current_line()
+-- local line_content = vim.api.nvim_get_current_line
+
 
 function M.insert_hop()
 	local line_content = vim.api.nvim_get_current_line()
