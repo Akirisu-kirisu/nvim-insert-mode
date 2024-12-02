@@ -55,9 +55,9 @@ Insert-Mode Search|Replace based navigation combined with quick jump features.
 ```
 ## keymaps
 ```lua
-vim.keymap.set("n", "<A-r>", [[<C-o>:lua require('nvim-insert-mode').insert_find_replace()<CR>]])
-vim.keymap.set("n", "<A-,>", [[<C-o>:lua require('nvim-insert-mode').insert_find_cut()<CR>]])
-vim.keymap.set("n", "<A-.>", [[<C-o>:lua require('nvim-insert-mode').insert_hop()<CR>]])
+vim.keymap.set("i", "<A-r>", [[<C-o>:lua require('nvim-insert-mode').insert_find_replace()<CR>]])
+vim.keymap.set("i", "<A-,>", [[<C-o>:lua require('nvim-insert-mode').insert_find_cut()<CR>]])
+vim.keymap.set("i", "<A-.>", [[<C-o>:lua require('nvim-insert-mode').insert_hop()<CR>]])
 ```
 ## Todo
 <A-r> Command Features:

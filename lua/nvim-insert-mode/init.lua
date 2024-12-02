@@ -1,7 +1,6 @@
 local M = {}
 -- local line_content = vim.api.nvim_get_current_line
 
-
 function M.insert_hop()
 	local line_content = vim.api.nvim_get_current_line()
 	-- Temporarily switch to normal mode and perform common actions
@@ -43,10 +42,15 @@ end
 
 function M.insert_find_replace()
 	-- Get user input for the replacement character
-	local line_content = vim.api.nvim_get_current_line()
-	local replace_char = vim.fn.input("Replace with: ")
-	local input_length = #replace_char
 
+	local replace_char = vim.fn.input("Replace with: ")
+
+    if replace_char == '' then
+        return
+    end
+
+	local line_content = vim.api.nvim_get_current_line()
+	local input_length = #replace_char
 	-- Temporarily switch to normal mode and mark the current position
 	vim.cmd("normal! <C-o>") -- Go to normal mode briefly
 	vim.cmd("normal! ma") -- Mark the current position
