@@ -20,6 +20,21 @@ function M.insert_hop()
 	end
 end
 
+function M.insert_hop_novisual()
+	local line_content = vim.api.nvim_get_current_line()
+	-- Temporarily switch to normal mode and perform common actions
+	vim.cmd("normal! <C-o>") -- Go to normal mode briefly
+	vim.cmd("normal! h") -- Move cursor left (modify as needed)
+	vim.cmd("normal! l") -- Move cursor right (modify as needed)
+
+	-- Check if the line is empty and choose the appropriate hop command
+	if line_content == "" then
+		vim.cmd("HopAnywhere") -- Hop to the desired position
+	else
+		vim.cmd("HopAnywhereCurrentLine") -- Hop to the desired position
+	end
+end
+
 function M.insert_find_cut()
 	-- Temporarily switch to normal mode and perform common actions
 
