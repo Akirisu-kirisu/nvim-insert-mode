@@ -53,7 +53,7 @@ function M.insert_hop_novisual()
 		})
 	else
 		require("sj").run({
-			auto_jump = true,
+			auto_jump = false ,
 			separator = "",
 			pattern_type = "lua_plain",
 			forward_search = true,
