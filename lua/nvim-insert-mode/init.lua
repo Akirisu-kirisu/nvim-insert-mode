@@ -32,9 +32,10 @@ function M.insert_multi_hop()
 	vim.cmd("normal! v") -- Enter visual mode
 
 	-- Check if the line is empty and choose the appropriate hop command
-	if line_content == "" then
-		vim.cmd("HopAnywhere") -- Hop to the desired position
-	end
+	-- if line_content == "" then
+	-- vim.cmd("HopAnywhere") -- Hop to the desired position
+	vim.cmd("HopCamelCase") -- Hop to the desired position
+	-- end
 end
 
 function M.insert_hop_novisual()
