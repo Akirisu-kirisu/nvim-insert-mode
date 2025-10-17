@@ -23,13 +23,52 @@ function M.insert_hop()
 		vim.cmd("HopAnywhereCurrentLine") -- Hop to the desired position
 	end
 end
-function M.insert_multi_hop()
+function M.normal_visual_hop()
 	local line_content = vim.api.nvim_get_current_line()
+	-- Temporarily switch to normal mode and perform common actions
+	vim.cmd("normal! <C-o>") -- Go to normal mode briefly
+	if vim.fn.line(".") == 1 then
+		-- Cursor is in the first line
+		vim.cmd("normal! v") -- Enter visual mode
+	else
+		vim.cmd("normal! h") -- Move cursor left (modify as needed)
+		vim.cmd("normal! l") -- Move cursor right (modify as needed)
+		vim.cmd("normal! v") -- Enter visual mode
+	end
+	-- Check if the line is empty and choose the appropriate hop command
+	if line_content == "" then
+		require("sj").run({
+			pattern_type = "lua_plain",
+			forward_search = true,
+			separator = "",
+			relative_labels = true,
+			update_search_register = true,
+			seach_scope = "buffer",
+			use_last_pattern = false,
+			inclusive = true,
+		})
+	else
+		require("sj").run({
+			auto_jump = false,
+			separator = "",
+			pattern_type = "lua_plain",
+			forward_search = true,
+			relative_labels = true,
+			update_search_register = true,
+			-- seach_scope = "buffer",
+			search_scope = "current_line", --works with other scopes
+			use_last_pattern = false,
+			inclusive = true,
+		})
+	end
+end
+function M.insert_multi_hop()
+	-- local line_content = vim.api.nvim_get_current_line()
 	-- Temporarily switch to normal mode and perform common actions
 	vim.cmd("normal! <C-o>") -- Go to normal mode briefly
 	vim.cmd("normal! h") -- Move cursor left (modify as needed)
 	vim.cmd("normal! l") -- Move cursor right (modify as needed)
-	vim.cmd("normal! v") -- Enter visual mode
+	-- vim.cmd("normal! v") -- Enter visual mode
 
 	-- Check if the line is empty and choose the appropriate hop command
 	-- if line_content == "" then
